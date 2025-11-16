@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity("tbl_compaigns")
-export class Compaign {
+export class CompaignEntity {
 
   @PrimaryGeneratedColumn()
   id: number;
