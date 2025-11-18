@@ -1,5 +1,5 @@
-interface PaymentProvider {
-  initializePayment(): any;
-  processCallback(): any;
-  verifyTransaction(): any;
+interface PaymentGateway {
+  initializePayment(): void;
+  processCallback(): void;
+  verifyTransaction(): void;
 }
