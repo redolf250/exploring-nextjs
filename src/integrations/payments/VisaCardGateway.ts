@@ -1,4 +1,4 @@
-export class VisaCardStrategy implements PaymentGateway {
+export class VisaCardGateway implements PaymentGateway {
   initializePayment() {
     throw new Error('Method not implemented.');
   }
