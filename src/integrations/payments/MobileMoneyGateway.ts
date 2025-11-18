@@ -1,11 +1,11 @@
-export class MobileMoneyStrategy implements PaymentGateway {
+export class MobileMoneyGateway implements PaymentGateway {
   initializePayment() {
-    throw new Error('Method not implemented.');
+    console.log("Initializing Payment Gateway");
   }
   processCallback() {
     throw new Error('Method not implemented.');
   }
   verifyTransaction() {
-    throw new Error('Method not implemented.');
+    console.log("Initializing Visa Gateway");
   }
 }
