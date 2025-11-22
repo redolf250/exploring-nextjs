@@ -4,6 +4,7 @@ import { UsersModule } from './users/users.module';
 import { CompaignModule } from './compaign/compaign.module';
 import { ProductModule } from './product/product.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { DigitalSignatureModule } from './digital-signature/digital-signature.module';
 import databaseConfig from './configs/databaseConfig';
 
 @Module({
@@ -28,7 +29,8 @@ import databaseConfig from './configs/databaseConfig';
     }),
     UsersModule,
     CompaignModule,
-    ProductModule
+    ProductModule,
+    DigitalSignatureModule
   ],
   controllers: [],
   providers: [],
