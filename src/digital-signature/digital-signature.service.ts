@@ -5,6 +5,18 @@ import { SignatureDto } from './signature.dto';
 @Injectable()
 export class DigitalSignatureService {
 
+  generateHmac(body: SignatureDto) {
+    const { fullName, creation, expiration } = body;
+    const data =  `fullName=${fullName}
+                    creation=${creation}
+                    expiration=${expiration}`;
+    const hmac = crypto
+      .createHmac('sha256', `${process.env.SECRET}`)
+      .update(data)
+      .digest('hex');
+    return {hmac: hmac};
+  }
+
    generateKeyPair() {
     const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
       modulusLength: 2048, // Key size
