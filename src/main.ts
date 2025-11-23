@@ -2,9 +2,16 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
 import { ValidationPipe } from '@nestjs/common';
+import * as express from 'express';
 import { HttpExceptionFilter } from './commons/exceptions/HttpExceptionFilter';
 import { DatabaseExceptionFilter } from './commons/exceptions/DatabaseExceptionFilter';
 dotenv.config();
+
+declare global {
+  interface Request {
+    rawBody?: Buffer;
+  }
+}
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,6 +25,11 @@ async function bootstrap() {
     }),
     //app.useGlobalInterceptors(new Interceptor())
   );
+  app.use(express.json({
+    verify: (req: any, res, buf) => {
+      req.rawBody = buf; // store raw bytes
+    },
+  }),)
 
   await app.listen(process.env.PORT ?? 5000);
 }
