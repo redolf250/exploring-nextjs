@@ -1,16 +1,22 @@
-import { IsDate, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsDate,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class SignatureDto {
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   fullName: string;
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
   creation: Date;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   expiration: Date;
 
   @IsOptional()
@@ -24,4 +30,12 @@ export class SignatureDto {
   @IsOptional()
   @IsString()
   publicKey : string;
+
+  @IsOptional()
+  @IsNumber()
+  amount : number;
+
+  @IsOptional()
+  @IsString()
+  currency : string;
 }
