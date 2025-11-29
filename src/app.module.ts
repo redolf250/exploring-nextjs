@@ -5,6 +5,10 @@ import { CompaignModule } from './compaign/compaign.module';
 import { ProductModule } from './product/product.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DigitalSignatureModule } from './digital-signature/digital-signature.module';
+import { KafkaListnerController } from './kafka-listner/kafka-listner.controller';
+import { KafkaListenerController } from './kafka-listener/kafka-listener.controller';
+import { KafkaListenerService } from './kafka-listener/kafka-listener.service';
+import { KafkaService } from './integrations/kafka.service';
 import databaseConfig from './configs/databaseConfig';
 
 @Module({
@@ -32,8 +36,8 @@ import databaseConfig from './configs/databaseConfig';
     ProductModule,
     DigitalSignatureModule
   ],
-  controllers: [],
-  providers: [],
+  controllers: [KafkaListnerController, KafkaListenerController],
+  providers: [KafkaListenerService, KafkaService],
   exports: [],
 })
 export class AppModule {}
